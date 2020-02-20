@@ -16,6 +16,9 @@ const MainNavBar = ({ currentUser, logout}) => {
           <li className="nav-item active">
             <Link className="nav-link" to="/">Inicio</Link>
           </li>
+          <li className="nav-item active">
+            <Link className="nav-link" to="/login">Login</Link>
+          </li>
 
           {currentUser && (
             <div>
