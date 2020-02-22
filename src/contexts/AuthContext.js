@@ -1,5 +1,6 @@
 import React, { createContext } from 'react';
-import { diHauseRoutes } from '../services/DiHauseService'
+import { UserRoutes } from '../services/DiHauseService'
+import { LOGOUT_URL } from '../services/constants';
 
 const AuthContext = createContext();
 
@@ -14,7 +15,7 @@ export class AuthContextProvider extends React.Component {
   }
 
   logout = () => {
-    diHauseRoutes.logout()
+    UserRoutes[LOGOUT_URL]()
       .then(() => {
         this.setUser()
       })

@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+
+/*GENERALES -------*/
+body {
+  font-family: -apple-system, "Montserrat", BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: rgb(34, 34, 34);
+}
+img { max-width: 100%; }
+
+/*NAVBAR------------*/
+.navbar {
+  box-shadow: 0 1px 0 #EBEBEB;
+  height: 80px;
+}
+
+
+/*HOME------------*/
+.home_open_picture  {
+  background: url('https://images.unsplash.com/photo-1464890100898-a385f744067f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80') no-repeat center center;
+  min-height: 70vh;
+  background-size: cover;
+}
+.home_open_picture h2 {
+  background: rgba(255, 255, 255, 0.64);
+}
+.popular_cities_home .card {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px !important;
+}

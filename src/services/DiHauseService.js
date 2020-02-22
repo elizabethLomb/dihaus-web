@@ -40,42 +40,48 @@ const createProperty = () =>
 const registrerUser = () =>
   catcher(() => axios.post(`${API_URL}${USER_REGISTRER_URL}`))
 
-const contactUserProperty = () => 
-  catcher(() => axios.post(`${API_URL}${CONTACT_PROPERTY_URL}`))
+const contactUserProperty = (id) => 
+  catcher(() => axios.post(`${API_URL}${CONTACT_PROPERTY_URL}${id}`))
 
-const getHauserBookingList = () => 
-  catcher(() => axios.get(`${API_URL}${HAUSER_BOOKING_LIST_URL}`))
+const getHauserBookingList = (id) => 
+  catcher(() => axios.get(`${API_URL}${HAUSER_BOOKING_LIST_URL}${id}`))
 
-const bookingProperty = () => 
-  catcher(() => axios.post(`${API_URL}${BOOKING_PROPERTY_URL}`))
+const bookingProperty = (id) => 
+  catcher(() => axios.post(`${API_URL}${BOOKING_PROPERTY_URL}${id}`))
 
-const getUserMessages = () => 
-  catcher(() => axios.get(`${API_URL}${USER_MESSAGES_URL}`))
+const getUserMessages = (id) => 
+  catcher(() => axios.get(`${API_URL}${USER_MESSAGES_URL}${id}`))
 
-const getUserProfile = () => 
-  catcher(() => axios.get(`${API_URL}${USER_PROFILE_URL}`))
+const getUserProfile = (id) => 
+  catcher(() => axios.get(`${API_URL}${USER_PROFILE_URL}${id}`))
 
-const userComment = () => 
-  catcher(() => axios.get(`${API_URL}${USER_COMMENTS_URL}`))
+const userComment = (id) => 
+  catcher(() => axios.get(`${API_URL}${USER_COMMENTS_URL}${id}`))
 
-const getPropertyDetail = () => 
-  catcher(() => axios.get(`${API_URL}${DETAIL_PROPERTY_URL}`))
+const getPropertyDetail = (id) => 
+  catcher(() => axios.get(`${API_URL}${DETAIL_PROPERTY_URL}${id}`))
 
-const getPropertyListLocation = () => 
-  catcher(() => axios.get(`${API_URL}${PROPERTY_LOCATION_URL}`))
+const getPropertyListLocation = (location) => 
+  catcher(() => axios.get(`${API_URL}${location}${PROPERTY_LOCATION_URL}`))
 
-export const diHauseRoutes = {
-  [HOME_URL]: getHome,
+export const UserRoutes = {
   [LOGIN_URL]: getLogin,
   [LOGOUT_URL]: getLogout,
-  [CREATE_PROPERTY_URL]: createProperty,
   [USER_REGISTRER_URL]: registrerUser,
-  [CONTACT_PROPERTY_URL]: contactUserProperty,
   [HAUSER_BOOKING_LIST_URL]: getHauserBookingList,
-  [BOOKING_PROPERTY_URL]: bookingProperty,
   [USER_MESSAGES_URL]: getUserMessages,
+  [BOOKING_PROPERTY_URL]: bookingProperty,
+  [CONTACT_PROPERTY_URL]: contactUserProperty,
   [USER_PROFILE_URL]: getUserProfile,
-  [USER_COMMENTS_URL]: userComment,
+  [USER_COMMENTS_URL]: userComment
+}
+
+export const PropertiesRoutes = {
+  [CREATE_PROPERTY_URL]: createProperty,
   [DETAIL_PROPERTY_URL]: getPropertyDetail,
   [PROPERTY_LOCATION_URL]: getPropertyListLocation
+}
+
+export const GeneralRoutes = {
+  [HOME_URL]: getHome
 }
