@@ -3,7 +3,8 @@ import { PropertiesRoutes } from '../services/DiHauseService';
 import { DETAIL_PROPERTY_URL } from '../services/constants';
 import Loading  from './misc/Loading';
 import { Link } from 'react-router-dom';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import  MapContainer from './property/MapContainer.js';
+
 
 const correlation = {
   availability: 'Disponibilidad',
@@ -30,10 +31,6 @@ class PropertyDetail extends Component {
     }
 
     const flat = this.state.property;
-    const mapStyles = {
-      width: '100%',
-      height: '100%',
-    };
     console.log(flat)
 
     return(
@@ -85,8 +82,8 @@ class PropertyDetail extends Component {
               <div className="flat_description">
                 <h5 className="mb-4">Descripción</h5>
                 <p>{flat.description}</p>
-                <Link to={`/contact_hauser/${flat.id}`}>
-                  <span className="font-weight-bold">Contactar Hauser</span>
+                <Link className="btn btn-outline-dark btn-outline-hauser" to={`/contact_hauser/${flat.id}`}>
+                  Contactar Hauser
                 </Link>
               </div>
               <hr/>
@@ -107,24 +104,29 @@ class PropertyDetail extends Component {
                 <h5 className="mb-4">Distribución</h5>
                 <div className="row">
                   <div className="col-lg-4 col-md-4 col-12">
-                    <div className="box text-center">
+                    <div className="box text-center h-100">
                       <img className="mb-1" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/double_bed-512.png" alt=""/>
-                      <p className="mb-1">{flat.rooms > 1 ? "Dormitorios" : "Dormitorio"}</p>
-                      <span>{flat.rooms}</span>
+                      <p className="mb-0">{flat.rooms > 1 ? "Dormitorios " : "Dormitorio "}<span>{flat.rooms}</span></p>
                     </div>
                   </div>
                   <div className="col-lg-4 col-md-4 col-12">
-                    <div className="box text-center">
-                      <img className="mb-1" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/bathtub-512.png" alt=""/>
-                      <p className="mb-1">{flat.bathrooms > 1 ? "Baños" : "Baño"}</p>
-                      <span>{flat.bathrooms}</span>
+                    <div className="box text-center h-100">
+                      <img className="mb-0" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/bathtub-512.png" alt=""/>
+                      <p className="mb-1">{flat.bathrooms > 1 ? "Baños " : "Baño "}
+                      <span>{flat.bathrooms}</span></p>
                     </div>
                   </div>
                   <div className="col-lg-4 col-md-4 col-12">
-                    <div className="box text-center">
+                    <div className="box text-center h-100">
                       {flat.facade === "Exterior" 
-                        ? <img className="mb-1" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/window-512.png" alt="Exterior"/>
-                        : <img className="mb-1" src="" alt="Interior"/>
+                        ? <div>
+                            <img className="mb-1" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/window-512.png" alt="Exterior"/>
+                            <p className="mb-0">Exterior</p>
+                          </div>
+                        : <div>
+                            <img className="mb-0" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/light_lamp-512.png" alt="Interior"/>
+                            <p>Interior</p>
+                          </div>
                       }
                     </div>
                   </div>
@@ -144,14 +146,7 @@ class PropertyDetail extends Component {
               <hr/>
               <div className="flat_location">
                 <h5 className="mb-4">Ubicación</h5>
-                <Map
-                  google={this.props.google}
-                  zoom={8}
-                  style={mapStyles}
-                  initialCenter={{ lat: 47.444, lng: -122.176}}
-                >
-                  <Marker position={{ lat: 48.00, lng: -122.00}} />
-                </Map>
+                <MapContainer {...flat}/>    
               </div>
               <hr/>
               <div className="flat_disponibility_calendar">

@@ -9,6 +9,12 @@ img { max-width: 100%; }
 
 a {
   color: #00b7ff;
+  text-decoration: none;
+}
+
+.btn-outline-hauser {
+  color: #00b7ff;
+    border-color: #00b7ff;
 }
 
 /*NAVBAR------------*/
@@ -38,6 +44,10 @@ a {
 }
 .popular_cities_home .card {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px !important;
+}
+a.col  {
+  color: black;
+  text-decoration: none;
 }
 
 /*PROPERTY DETAIL------------*/
