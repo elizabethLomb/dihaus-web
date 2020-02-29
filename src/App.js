@@ -7,15 +7,8 @@ import MainNavBar from './components/misc/Navbar';
 import Login from './components/misc/Login';
 import PropertiesList from './components/PropertiesList';
 import PropertyDetail from './components/PropertyDetail';
-
-//ROUTES
-// import { UserRoutes, PropertiesRoutes } from './services/DiHauseService'
-// import {
-//   LOGIN_URL,
-//   PROPERTY_LOCATION_URL
-// } from './services/constants'
-
-
+import UserProfile from './components/user/UserProfile';
+import ContactHauser from './components/user/ContactHauser';
 
 const App = () => {
   return (
@@ -28,6 +21,8 @@ const App = () => {
 
         <Route exact path='/:location/homes' component={PropertiesList}/>
         <Route exact path='/home/:id' component={PropertyDetail}></Route>
+        <Route exact path="/user/:id" component={UserProfile}></Route>
+        <Route exact path='/contact_hauser/:id' component={ContactHauser}></Route>
       </Switch>
     </div>
   )
