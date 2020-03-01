@@ -58,3 +58,7 @@ a.col  {
   border-radius: 4px;
 }
 .box img { max-width: 100px; }
+.flat_location {
+  height: 550px;
+}
+.mapContainer > div { height: fit-content !important; }

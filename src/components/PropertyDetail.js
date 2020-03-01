@@ -32,7 +32,6 @@ class PropertyDetail extends Component {
 
     const flat = this.state.property;
     console.log(flat)
-
     return(
       <div>
         <div className="container-fluid pl-0 pr-0">
@@ -52,7 +51,7 @@ class PropertyDetail extends Component {
                     if(u === "avatar") {
                       return( 
                         <div className="order-1" key={i}>
-                          <Link to={`/user/${flat.user.id}`}>
+                          <Link to={`/user/${flat.user.id}`} >
                             <img className="user_avatar mb-2" src={flat.user[u]} alt=""/>
                           </Link>
                         </div>
@@ -105,13 +104,13 @@ class PropertyDetail extends Component {
                 <div className="row">
                   <div className="col-lg-4 col-md-4 col-12">
                     <div className="box text-center h-100">
-                      <img className="mb-1" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/double_bed-512.png" alt=""/>
+                      <img className="mb-1" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/double_bed-512.png" alt="https://www.iconfinder.com/"/>
                       <p className="mb-0">{flat.rooms > 1 ? "Dormitorios " : "Dormitorio "}<span>{flat.rooms}</span></p>
                     </div>
                   </div>
                   <div className="col-lg-4 col-md-4 col-12">
                     <div className="box text-center h-100">
-                      <img className="mb-0" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/bathtub-512.png" alt=""/>
+                      <img className="mb-0" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/bathtub-512.png" alt="https://www.iconfinder.com/"/>
                       <p className="mb-1">{flat.bathrooms > 1 ? "Baños " : "Baño "}
                       <span>{flat.bathrooms}</span></p>
                     </div>
@@ -120,11 +119,11 @@ class PropertyDetail extends Component {
                     <div className="box text-center h-100">
                       {flat.facade === "Exterior" 
                         ? <div>
-                            <img className="mb-1" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/window-512.png" alt="Exterior"/>
+                            <img className="mb-1" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/window-512.png" alt="https://www.iconfinder.com/"/>
                             <p className="mb-0">Exterior</p>
                           </div>
                         : <div>
-                            <img className="mb-0" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/light_lamp-512.png" alt="Interior"/>
+                            <img className="mb-0" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/light_lamp-512.png" alt="https://www.iconfinder.com/"/>
                             <p>Interior</p>
                           </div>
                       }
@@ -144,18 +143,53 @@ class PropertyDetail extends Component {
                 })}
               </div>
               <hr/>
-              <div className="flat_location">
-                <h5 className="mb-4">Ubicación</h5>
-                <MapContainer {...flat}/>    
-              </div>
-              <hr/>
               <div className="flat_disponibility_calendar">
                 <h5 className="mb-4">Disponibilidad</h5>
                 <p>Introduce la fecha de tu cita y comprobar la disponibilidad</p>
               </div>
 
-            </div>
+              <hr/>
+              <div className="flat_location mb-4">
+                <h5 className="mb-4">Ubicación</h5>
+                <p>Tendrás los datos exactos de la ubicación una vez que tu cita estéconfirmada</p>
+                <MapContainer location={flat.location.type[0].coordinates}/>  
+              </div>
+
+              <hr/>
+              <div className="flat_user_comments">
+                <h5 className="mb-4">Reseñas sobre el Hauser</h5>
+                {Object.keys(flat.user).map(c => {
+                  if(c === "comments"){
+                    return flat.user[c].map((e, i) => {
+                      return (
+                        <div className="card" key={i}>
+                          <div className="card-body">
+                            <div className="d-flex">
+                              <div className="col-2">
+                                <Link to={`/user/${e.fromUser.id}`} alt="">
+                                  <img className="user_avatar mb-2" src={e.fromUser.avatar} alt={e.fromUser.name} />
+                                </Link>
+                              </div>
+                              <div className="col-9">{e.fromUser.name}</div>
+                            </div>
+                            <p className="card-text">{e.text}</p>
+                          </div>
+                        </div>
+                      )
+                    })
+                  }
+                })}
+              </div>
+
+              <hr/>
+              <div className="flat_complaint">
+                <h5 className="mb-4">¿Hay algo que no cuadra?</h5>
+                <a className="btn btn-outline-dark btn-outline-hauser"  href="/">Denunciar este anuncio</a>
+              </div>
+
             {/* col-lg-8 col-md-8 col-12 */}
+            </div>
+            
 
             <div className="col-lg-4 col-md-4 col-12 row">
               calendar
