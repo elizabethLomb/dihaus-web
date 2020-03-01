@@ -4,6 +4,7 @@ import { DETAIL_PROPERTY_URL } from '../services/constants';
 import Loading  from './misc/Loading';
 import { Link } from 'react-router-dom';
 import  MapContainer from './property/MapContainer.js';
+import DatePicker from './property/DatePicker';
 
 
 const correlation = {
@@ -86,6 +87,46 @@ class PropertyDetail extends Component {
                 </Link>
               </div>
               <hr/>
+              <div className="flat_distribution">
+                <h5 className="mb-4">Distribución</h5>
+                <div className="row">
+                  <div className="col-lg-4 col-md-4 col-12 mb-3">
+                    <div className="box text-center h-100 ">
+                      <img className="mb-1" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/double_bed-512.png" alt="https://www.iconfinder.com/"/>
+                      <p className="mb-0">{flat.rooms > 1 ? "Dormitorios " : "Dormitorio "}<span>{flat.rooms}</span></p>
+                    </div>
+                  </div>
+                  <div className="col-lg-4 col-md-4 col-12 mb-3">
+                    <div className="box text-center h-100">
+                      <img className="mb-0" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/bathtub-512.png" alt="https://www.iconfinder.com/"/>
+                      <p className="mb-1">{flat.bathrooms > 1 ? "Baños " : "Baño "}
+                      <span>{flat.bathrooms}</span></p>
+                    </div>
+                  </div>
+                  <div className="col-lg-4 col-md-4 col-12 mb-3">
+                    <div className="box text-center h-100">
+                      {flat.facade === "Exterior" 
+                        ? <div>
+                          <img className="mb-1" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/window-512.png" alt="https://www.iconfinder.com/"/>
+                          <p className="mb-0">Exterior</p>
+                        </div>
+                      : <div>
+                          <img className="mb-0" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/light_lamp-512.png" alt="https://www.iconfinder.com/"/>
+                          <p>Interior</p>
+                        </div>
+                      }
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+              <div className="flat_more_information">
+                <h5 className="mb-4">Más Información</h5>
+                <p>Superficie: {flat.size} m2</p>
+                <p>Estado: {flat.state}</p>
+                <p>Amueblado: {flat.furnished}</p>
+              </div>
+              <hr/>
               <div className="flat_comforts">
                 <h5 className="mb-4">Servicios</h5>
                 <div className="row">
@@ -96,39 +137,6 @@ class PropertyDetail extends Component {
                       </div>
                     )
                   })}
-                </div>
-              </div>
-              <hr/>
-              <div className="flat_distribution">
-                <h5 className="mb-4">Distribución</h5>
-                <div className="row">
-                  <div className="col-lg-4 col-md-4 col-12">
-                    <div className="box text-center h-100">
-                      <img className="mb-1" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/double_bed-512.png" alt="https://www.iconfinder.com/"/>
-                      <p className="mb-0">{flat.rooms > 1 ? "Dormitorios " : "Dormitorio "}<span>{flat.rooms}</span></p>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-md-4 col-12">
-                    <div className="box text-center h-100">
-                      <img className="mb-0" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/bathtub-512.png" alt="https://www.iconfinder.com/"/>
-                      <p className="mb-1">{flat.bathrooms > 1 ? "Baños " : "Baño "}
-                      <span>{flat.bathrooms}</span></p>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-md-4 col-12">
-                    <div className="box text-center h-100">
-                      {flat.facade === "Exterior" 
-                        ? <div>
-                            <img className="mb-1" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/window-512.png" alt="https://www.iconfinder.com/"/>
-                            <p className="mb-0">Exterior</p>
-                          </div>
-                        : <div>
-                            <img className="mb-0" src="https://cdn1.iconfinder.com/data/icons/furniture-line-modern-classy/512/light_lamp-512.png" alt="https://www.iconfinder.com/"/>
-                            <p>Interior</p>
-                          </div>
-                      }
-                    </div>
-                  </div>
                 </div>
               </div>
               <hr/>
@@ -192,7 +200,7 @@ class PropertyDetail extends Component {
             
 
             <div className="col-lg-4 col-md-4 col-12 row">
-              calendar
+              <DatePicker></DatePicker>
             </div>
           </div>
         </div>

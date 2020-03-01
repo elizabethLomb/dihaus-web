@@ -51,7 +51,13 @@ a.col  {
 }
 
 /*PROPERTY DETAIL------------*/
-.flat_featuredImage img { width: 100%; }
+.flat_featuredImage {
+  max-height: 60vh;
+  overflow: hidden;
+}
+.flat_featuredImage img { 
+  width: -webkit-fill-available;
+}
 .box {
   padding: 24px;
   border: 1px solid rgb(235, 235, 235);
