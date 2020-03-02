@@ -68,3 +68,9 @@ a.col  {
   height: 550px;
 }
 .mapContainer > div { height: fit-content !important; }
+
+/* date picker */
+.react-datepicker-wrapper { width: 100%; }
+.react-datepicker-popper {
+  width: 330px;
+}

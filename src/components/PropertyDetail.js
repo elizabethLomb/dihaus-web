@@ -4,7 +4,7 @@ import { DETAIL_PROPERTY_URL } from '../services/constants';
 import Loading  from './misc/Loading';
 import { Link } from 'react-router-dom';
 import  MapContainer from './property/MapContainer.js';
-import DatePicker from './property/DatePicker';
+import PropertyDatePicker from './property/PropertyDatePicker';
 
 
 const correlation = {
@@ -199,8 +199,8 @@ class PropertyDetail extends Component {
             </div>
             
 
-            <div className="col-lg-4 col-md-4 col-12 row">
-              <DatePicker></DatePicker>
+            <div className="col-lg-4 col-md-4 col-12">
+              <PropertyDatePicker/>
             </div>
           </div>
         </div>

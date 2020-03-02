@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 //COMPONENTS
 import Home from './components/Home';
@@ -23,6 +23,8 @@ const App = () => {
         <Route exact path='/home/:id' component={PropertyDetail}></Route>
         <Route exact path="/user/:id" component={UserProfile}></Route>
         <Route exact path='/contact_hauser/:id' component={ContactHauser}></Route>
+
+        <Redirect to="/"/>
       </Switch>
     </div>
   )
