@@ -1,4 +1,4 @@
-export const API_URL = process.env.REACT_APP_API || 'http://localhost:5000/'
+export const API_URL = /*process.env.REACT_APP_API_URL || */'http://localhost:5000'
 
 export const HOME_URL = '/'
 
@@ -22,6 +22,6 @@ export const USER_PROFILE_URL = '/user/'
                                 //'/user/comments/:id'
 export const USER_COMMENTS_URL = '/user/comments/'
                                   //'/home/:id'
-export const DETAIL_PROPERTY_URL = 'home/'
+export const DETAIL_PROPERTY_URL = '/home/'
                                     //'/:location/homes'
 export const PROPERTY_LOCATION_URL = '/homes'

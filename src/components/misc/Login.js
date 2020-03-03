@@ -32,6 +32,7 @@ class Login extends Component{
       UserRoutes[LOGIN_URL]({ ...this.state.data })
         .then(
           (user) => {
+            console.log({ user })
             this.props.setUser(user)
           },
           () => {

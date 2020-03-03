@@ -32,7 +32,7 @@ class PropertyDetail extends Component {
     }
 
     const flat = this.state.property;
-    console.log(flat)
+
     return(
       <div>
         <div className="container-fluid pl-0 pr-0">
@@ -52,7 +52,7 @@ class PropertyDetail extends Component {
                     if(u === "avatar") {
                       return( 
                         <div className="order-1" key={i}>
-                          <Link to={`/user/${flat.user.id}`} >
+                          <Link to={`/user/${flat.user.id}`}>
                             <img className="user_avatar mb-2" src={flat.user[u]} alt=""/>
                           </Link>
                         </div>
@@ -200,7 +200,7 @@ class PropertyDetail extends Component {
             
 
             <div className="col-lg-4 col-md-4 col-12">
-              <PropertyDatePicker/>
+              <PropertyDatePicker propertyId={this.props.match.params.id} />
             </div>
           </div>
         </div>

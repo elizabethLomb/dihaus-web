@@ -17,19 +17,22 @@ import {
   PROPERTY_LOCATION_URL
 } from './constants';
 
+axios.defaults.withCredentials = true;
+
+
 const catcher = async fn => {
   try {
     return (await fn()).data
   } catch(error) {
-    return []
+    throw error
   }
 }
 
 const getHome = () => 
   catcher(() => axios.get(`${API_URL}`))
 
-const getLogin = () =>
-  catcher(() => axios.post(`${API_URL}${LOGIN_URL}`))
+const getLogin = (data) =>
+  catcher(() => axios.post(`${API_URL}${LOGIN_URL}`, data))
 
 const getLogout = () =>
   catcher(() => axios.post(`${API_URL}${LOGOUT_URL}`))
@@ -46,8 +49,8 @@ const contactUserProperty = (id) =>
 const getHauserBookingList = (id) => 
   catcher(() => axios.get(`${API_URL}${HAUSER_BOOKING_LIST_URL}${id}`))
 
-const bookingProperty = (id) => 
-  catcher(() => axios.post(`${API_URL}${BOOKING_PROPERTY_URL}${id}`))
+const bookingProperty = (id, date) =>
+  catcher(() => axios.post(`${API_URL}${BOOKING_PROPERTY_URL}${id}`, { date }))
 
 const getUserMessages = (id) => 
   catcher(() => axios.get(`${API_URL}${USER_MESSAGES_URL}${id}`))
@@ -61,8 +64,9 @@ const userComment = (id) =>
 const getPropertyDetail = (id) => 
   catcher(() => axios.get(`${API_URL}${DETAIL_PROPERTY_URL}${id}`))
 
-const getPropertyListLocation = (location) => 
-  catcher(() => axios.get(`${API_URL}${location}${PROPERTY_LOCATION_URL}`))
+const getPropertyListLocation = (location) =>
+  catcher(() => axios.get(`${API_URL}/${location}${PROPERTY_LOCATION_URL}`))
+
 
 export const UserRoutes = {
   [LOGIN_URL]: getLogin,

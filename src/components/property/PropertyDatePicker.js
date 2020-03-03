@@ -2,19 +2,19 @@ import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
-import { PropertiesRoutes } from "../../services/DiHauseService";
+import { UserRoutes } from "../../services/DiHauseService";
 import { BOOKING_PROPERTY_URL } from "../../services/constants";
 import { Redirect } from "react-router-dom";
 
 class PropertyDatePicker extends Component {
   state = {
-    startDate: new Date(),
+    booking: null,
     redirect: false
   }
 
-  handleChange = date => {
+  handleChange = (date, event) => {
     this.setState({
-      startDate: date
+      booking: date
     })
   }
 
@@ -22,14 +22,24 @@ class PropertyDatePicker extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
 
-    PropertiesRoutes[BOOKING_PROPERTY_URL].create(this.state.startDate).then(response => this.setState({ redirect: true }))
+    this.setState({ redirect: true}, () => {
+      UserRoutes[BOOKING_PROPERTY_URL](
+        this.props.propertyId,
+        this.state.booking
+      ).then(
+        () => {
+          this.setState({ redirect: true })
+        },
+        error => console.error(error)
+      )
+    })
   }
-
+  
   render() {
     if(this.state.redirect){
       return <Redirect to="/" />
     }
-
+    //console.log(this.state.data)
     return(
       <div className="card">
         <div className="card-body">
@@ -38,7 +48,7 @@ class PropertyDatePicker extends Component {
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <DatePicker
-                selected={this.state.startDate}
+                selected={this.state.booking}
                 onChange={this.handleChange}
                 showTimeSelect
                 timeFormat="HH:mm"
@@ -46,9 +56,10 @@ class PropertyDatePicker extends Component {
                 timeCaption="hora"
                 dateFormat="Pp"
                 className="form-control"
+                isClearable
               />
             </div>
-            <button class="btn btn-primary btn-block" type="submit">Solicitar cita</button>
+            <button className="btn btn-primary btn-block" type="submit">Solicitar cita</button>
           </form>
         </div>
       </div>

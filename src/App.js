@@ -20,9 +20,9 @@ const App = () => {
         <Route exact path='/login' component={Login}/>
 
         <Route exact path='/:location/homes' component={PropertiesList}/>
-        <Route exact path='/home/:id' component={PropertyDetail}></Route>
-        <Route exact path="/user/:id" component={UserProfile}></Route>
-        <Route exact path='/contact_hauser/:id' component={ContactHauser}></Route>
+        <Route exact path='/home/:id' component={PropertyDetail}/>
+        <Route exact path="/user/:id" component={UserProfile}/>
+        <Route exact path='/contact_hauser/:id' component={ContactHauser}/>
 
         <Redirect to="/"/>
       </Switch>

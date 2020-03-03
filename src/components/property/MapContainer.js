@@ -1,6 +1,5 @@
 import React from 'react';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
-import Loading from '../misc/Loading';
 
 //     //mongo [Long, LAT]
 //     //google [Lat, Long]
