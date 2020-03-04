@@ -19,7 +19,6 @@ class UserProfile extends Component {
     if (this.state.loading) {
       return (<Loading/>)
     }
-    console.log(this.state.user)
     const user = this.state.user
     return (
       <div className="container pt-4 mt-4 mb-4">
@@ -44,6 +43,7 @@ class UserProfile extends Component {
             <small>Se unió a Dihaus el {user.createdAt}</small>
             <p className="mt-3">{user.bio}</p>
             <hr/>
+            
             <h4 className="mb-4 mt-4">{user.properties.length > 1 ? "Anuncios" : "Anuncio"} de {user.name}</h4>
               <div className="row row-cols-1 row-cols-md-2">
                 {user.properties.map((p, i) => {

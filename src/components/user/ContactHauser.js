@@ -6,28 +6,17 @@ import { Redirect } from 'react-router-dom';
 
 class ContactHauser extends Component {
   state= {
-    property: [],
-    data: {
-      message: ''
-    },
+    message: '',
     error: false,
     loading: false,
     redirect: false
   }
 
-  async componentDidMount() {
-    const property = await UserRoutes[CONTACT_PROPERTY_URL](this.props.match.params.id)
-    this.setState({ property, loading: false })
-  }
-
   handleChange = (event) => {
     const { name, value } = event.target
-
     this.setState({
-      data: {
-        ...this.state.data,
-        [name]: value
-      }
+      ...this.state.message,
+      [name]: value
     })
   }
 
@@ -35,7 +24,7 @@ class ContactHauser extends Component {
     event.preventDefault()
     this.setState({ loading: true, error: false }, () => {
       UserRoutes[CONTACT_PROPERTY_URL](
-        { ...this.state.data }
+        { ...this.state.message }
       ).then(
         () => {
           this.setState({ redirect: true })
@@ -53,7 +42,7 @@ class ContactHauser extends Component {
     if(this.state.redirect){
       return <Redirect to="/" />
     }
-console.log(this.props)
+    console.log(this.props)
     return (
 
       <div className="contact_hauser_container container mt-4 pt-4">
@@ -61,7 +50,11 @@ console.log(this.props)
           <div className="col-8">
           <h3>¿Todavía tienes alguna pregunta para userFromProperty?</h3>
           <form onSubmit={this.handleSubmit}>
-            <textarea onChange={this.handleChange} className="form-control mb-4" name="userMessage" rows="7">{this.state.data.message}</textarea>
+            <textarea
+            onChange={this.handleChange}
+            className="form-control mb-4"
+            name="userMessage" rows="7"
+            value={this.state.message}></textarea>
             <button className="btn btn-primary" type="submit">Submit form</button>
           </form>
           </div>

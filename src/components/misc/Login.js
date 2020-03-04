@@ -47,7 +47,7 @@ class Login extends Component{
 
     if (this.props.currentUser) {
       return <Redirect to="/"/>
-  }
+    }
 
   return(
     <div className="login container pt-4 mt-4">
