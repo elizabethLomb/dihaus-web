@@ -1,9 +1,12 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+
 import React, { Component } from 'react';
 import Loading from '../misc/Loading';
 import { UserRoutes } from '../../services/DiHauseService';
 import { HAUSER_BOOKING_LIST_URL } from '../../services/constants';
 import { Link } from 'react-router-dom';
+import BigCalendar from '../misc/BigCalendar';
+
+
 
 class UserBookingList extends Component {
   state = {
@@ -21,10 +24,9 @@ class UserBookingList extends Component {
       return( <Loading/>)
     }
 
-    
     const user = this.state.currentUser
-    console.log( user)
-    debugger
+    
+    //console.log( user)
     return(
       <div className="container pt-4 mt-4 mb-4">
         {user.properties ? (
@@ -63,12 +65,19 @@ class UserBookingList extends Component {
                       </td>
                     </tr>
                   )
-                })}             
+                  
+                })
+              }             
               </tbody>
             </table>
-              
-            {/* <h2 className="mb-4 pb-4">Tienes {user.properties.bookings.length} reservas</h2> */}
+            <hr/>
+            <div className="mt-4 pt-4">
+              <h4>Reservas</h4>
+              <BigCalendar {...user}/>
+            </div>
           </div>
+
+
         ) : (
           <div>
             <h2 className="mb-4 pb-4">Tienes 0 citas</h2>
