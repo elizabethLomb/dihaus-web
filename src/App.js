@@ -11,6 +11,7 @@ import UserProfile from './components/user/UserProfile';
 import ContactHauser from './components/user/ContactHauser';
 import UserRegistrer from './components/user/UserRegistrer';
 import UserBookingList from './components/user/UserBookingList';
+import UserInbox from './components/user/UserInbox';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route exact path='/:id/user/booking-list' component={UserBookingList}/>
         <Route exact path='/user/register' component={UserRegistrer}/>
 
+        <Route exact path='/user/inbox/:id' component={UserInbox}/>
         <Route exact path='/:location/homes' component={PropertiesList}/>
         <Route exact path='/home/:id' component={PropertyDetail}/>
         <Route exact path="/user/:id" component={UserProfile}/>

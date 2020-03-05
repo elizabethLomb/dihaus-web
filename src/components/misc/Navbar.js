@@ -37,6 +37,10 @@ const MainNavBar = ({ currentUser, logout}) => {
                     to={`${currentUser.id}/user/booking-list`}>Reservas</Link>
                 </li>
                 <li className="nav-item active">
+                  <Link className="nav-link" 
+                    to={`/user/inbox/${currentUser.id}`}>Mensajes</Link>
+                </li>
+                <li className="nav-item active">
                   <button className="btn btn-danger btn-sm nav-link text-white" onClick={logout}>Cerrar Sesión</button>
                 </li>
               </ul>

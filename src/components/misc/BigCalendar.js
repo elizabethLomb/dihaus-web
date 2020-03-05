@@ -12,16 +12,13 @@ const BigCalendar = (user) => {
                 <div className="card">
                   <img src={b.property.featuredImage} alt="" />
                   <div className="card-body">
-                    {b.property.city}
-                    {/* {Object.keys(b.property).map((p, i) => {
-                      debugger
-                      console.log('p --->', p)
-                      return(
-                        <div key={i}>
-                          <img src={b.property[p].title} alt="" />
-                        </div>
-                      )
-                    })} */}
+                    <h5 className="card-title">{b.property.title}</h5>
+                    <small>{b.property.city}</small>
+                    <hr/>
+                    <div>
+                      <h6>{b.date}</h6>
+                      
+                    </div>
                   </div>
 
                 </div>

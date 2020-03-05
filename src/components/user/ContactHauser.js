@@ -53,8 +53,7 @@ class ContactHauser extends Component {
             <textarea
             onChange={this.handleChange}
             className="form-control mb-4"
-            name="userMessage" rows="7"
-            value={this.state.message}></textarea>
+            name="userMessage" rows="7">{this.state.message}</textarea>
             <button className="btn btn-primary" type="submit">Submit form</button>
           </form>
           </div>
