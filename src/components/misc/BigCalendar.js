@@ -1,22 +1,33 @@
 import React from 'react'
 
 const BigCalendar = (user) => {
-  const bookings = user.properties.map(p => p.bookings)
-  //console.log('user de calendar  _>' , user)
-  console.log(bookings)
-  debugger
   return(
     <div className="row row-cols-1 row-cols-md-3">
-      {bookings.map((e, i) => {
-        return(
-          <div key={i} className="col mb-4">
-            <div className="card">
-              <div className="card-body">
-                {e.status}
-              </div>
+      {user.properties.map(p => {
+        return p.bookings.map((b, i) => {
+          console.log('b -->', b)
+          return(
+            <div key={i} className="col mb-4">
+              <span>{b.status}</span>
+                <div className="card">
+                  <img src={b.property.featuredImage} alt="" />
+                  <div className="card-body">
+                    {b.property.city}
+                    {/* {Object.keys(b.property).map((p, i) => {
+                      debugger
+                      console.log('p --->', p)
+                      return(
+                        <div key={i}>
+                          <img src={b.property[p].title} alt="" />
+                        </div>
+                      )
+                    })} */}
+                  </div>
+
+                </div>
             </div>
-          </div>
-        )
+          )
+        })
       })}
     </div>
   )
